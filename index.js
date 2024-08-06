@@ -1,54 +1,54 @@
-let input = document.getElementById("input-username");
-let submit = document.getElementById("username-submit");
-let inputForm = document.querySelector(".input-container");
-let card = document.querySelector(".card-container");
+const input = document.getElementById("input-username");
+const submit = document.getElementById("username-submit");
+const inputForm = document.querySelector(".input-container");
+const card = document.querySelector(".card-container");
 
-card.classList.toggle("hidden");
+//hide the card container until username submission
+card.classList.add("hidden");
 
 // function fetches the json data for the user
 async function getUser(username) {
   try {
-    let response = await fetch(`https://api.github.com/users/${username}`);
+    const response = await fetch(`https://api.github.com/users/${username}`);
 
     if (!response.ok) {
       throw new Error("Could not fetch user");
     }
 
-    let user = await response.json();
-
-    console.log(user);
-    return user;
+    return response.json();
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 }
 
 // function that makes the profile card
 function createCard(profile) {
   
-  inputForm.classList.toggle("hidden");
-  card.classList.toggle("hidden");
-  let profileImage = document.getElementById("profile-photo");
+  inputForm.classList.add("hidden");
+
+  card.classList.remove("hidden");
+
+  const profileImage = document.getElementById("profile-photo");
   profileImage.src = profile.avatar_url;
 
-  let profileName = document.getElementById("name");
-  profileName.innerHTML = profile.name === null ? profile.login : profile.name;
+  const profileName = document.getElementById("name");
+  profileName.textContent = profile.name === null ? profile.login : profile.name;
 
-  let bio = document.getElementById("bio");
-  bio.innerHTML = profile.bio === null ? "Github Developer" : profile.bio;
+  const bio = document.getElementById("bio");
+  bio.textContent = profile.bio === null ? "Github Developer" : profile.bio;
 
-  let statsContainer = document.createElement("div");
+  const statsContainer = document.createElement("div");
 
-  let followers = document.getElementById("followers");
-  followers.innerHTML = profile.followers;
+  const followers = document.getElementById("followers");
+  followers.textContent = profile.followers;
 
-  let following = document.getElementById("following");
-  following.innerHTML = profile.following;
+  const following = document.getElementById("following");
+  following.textContent = profile.following;
 
-  let projects = document.getElementById("projects");
-  projects.innerHTML = profile.public_repos;
+  const projects = document.getElementById("projects");
+  projects.textContent = profile.public_repos;
 
-  let followButton = document.querySelector("#follow-link");
+  const followButton = document.querySelector("#follow-link");
   console.log(profile.html_url);
   
   followButton.onclick = () => {
@@ -63,25 +63,38 @@ function createCard(profile) {
 // event listener for submit button which creates the card upon submission
 submit.addEventListener(
   "click",
-  () => {
-    getUser(input.value).then((result) => {
-      if (result === undefined) {
-        alert("Please check if username is typed in correctly");
-      } else {
-        createCard(result);
+  async () => {
+
+    const username = input.value.trim();
+
+    if (username) {
+      try {
+        let profile = await getUser(username);
+        if (profile) {
+          createCard(profile);
+        } else {
+          alert("User was not found or there was an internal error. Please try again.")
+        }
+      } catch (error) {
+        console.error("An error occured while fetching user data:". error);
+      alert
       }
-    });
+      
+    } else {
+      alert("Please enter a username.")
+    }
+    
   }
 );
 
 
 // back 'button' eventlistener which toggles the hidden class
-let backButton = document.querySelector("#back");
+const backButton = document.querySelector("#back");
 back.addEventListener(
     "click", function (e) {
         if (e.target.tagName === "I" || e.target.tagName === "P") {
-            card.classList.toggle("hidden");
-            inputForm.classList.toggle("hidden");
+            card.classList.add("hidden");
+            inputForm.classList.remove("hidden");
         }
     }
   );
