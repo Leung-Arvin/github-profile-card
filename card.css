@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    font-family: Poppins;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100vw;
+    background-image: linear-gradient(to right top, #e3b8de, #bd93c7, #9370b2, #63519f, #1f378c);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    padding: 50px 50px 10px 50px;
+    border-radius: 20px;
+}
+
+.card-container.hidden {
+    display: none;
+}
+
+.card-container h3 {
+    font-size: 2rem;
+}
+
+.card-container h {
+    font-size: 2rem;
+}
+
+img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+}
+
+.stats-card {
+    padding: 20px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: lightgrey;
+    border-radius: 10px;
+}
+
+.card-container * {
+    margin-top: 20px;
+}
+
+
+.stats-container {
+    display: flex;
+    flex-direction: row;
+}
+
+#follow-button {
+    color: white;
+    outline: none;
+    border: none;
+    padding: 15px;
+    background-image: linear-gradient(to right top, #1d1dd3, #7d2fcc, #aa4cc7, #c96dc6, #de91ca);
+    border-radius: 10px;
+    font-size: 15px;
+    transition: all .5s ease;
+}
+
+#follow-button:hover {
+    animation: gradientAnimation 10s infinite;
+
+}
+
+.fa-solid {
+    margin-right: 500px;
+}
+
+.fa-solid:hover {
+    animation: jumpInfinite 1.5s;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes jumpInfinite {
+    0% {
+      margin-right: 500px;
+    }
+    50% {
+      margin-right: 520px;
+    }
+    100% {
+      margin-right: 500px;
+    }
+}

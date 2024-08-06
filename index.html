@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Github Card</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="card.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="input-container">
+      <h3 class="input-title">Create your own Github Card</h3>
+      <p class="instruction">Please input your Github username</p>
+      <div class="submission">
+        <input type="text" id="input-username" />
+        <button id="username-submit">Submit</button>
+      </div>
+    </div>
+
+    <div class="card-container">
+      <i class="fa-solid fa-chevron-left"></i>
+      <img
+        id="profile-photo"
+        src="https://cdn.pixabay.com/photo/2017/08/05/11/16/logo-2582748_640.png"
+      />
+      <h3 id="name"></h3>
+      <p id="bio"></p>
+      <div class="stats-container">
+        <div class="stats-card">
+          <h4>Followers</h4>
+          <p id="followers">0</p>
+        </div>
+        <div class="stats-card">
+          <h4>Following</h4>
+          <p id="following">0</p>
+        </div>
+        <div class="stats-card">
+          <h4>Projects</h4>
+          <p id="projects">0</p>
+        </div>
+
+        
+      </div>
+      <a id="follow-link" href="">
+        <button id="follow-button">Follow Me</button>
+      </a>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>
