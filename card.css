@@ -13,6 +13,7 @@ body {
     justify-content: center;
     min-height: 100vh;
     width: 100vw;
+    animation: gradientanimation 2s infinite;
     background-image: linear-gradient(to right top, #e3b8de, #bd93c7, #9370b2, #63519f, #1f378c);
     background-repeat: no-repeat;
     background-size: contain;
@@ -20,13 +21,22 @@ body {
 
 .card-container {
     display: flex;
+    position: absolute;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background: white;
     padding: 50px 50px 10px 50px;
     border-radius: 20px;
+    bottom: -100%;
+    animation: smooth-appear 1s ease forwards;
 }
+
+@keyframes smooth-appear {
+    to{
+      bottom: 50px;
+    }
+  }
 
 .card-container.hidden {
     display: none;
@@ -48,12 +58,16 @@ img {
 
 .stats-card {
     padding: 20px;
-    margin-right: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: lightgrey;
     border-radius: 10px;
+    width: 125px;
+}
+
+.space-right {
+    margin-right: 10px;
 }
 
 .card-container * {
@@ -82,13 +96,17 @@ img {
 
 }
 
-.fa-solid {
+#back {
+    display: flex;
     margin-right: 500px;
 }
 
-.fa-solid:hover {
-    animation: jumpInfinite 1.5s;
+#back p {
+    position:relative;
+    bottom: 4px;
+    margin-left: 4px;
 }
+
 
 @keyframes gradientAnimation {
     0% {
@@ -102,14 +120,4 @@ img {
     }
 }
 
-@keyframes jumpInfinite {
-    0% {
-      margin-right: 500px;
-    }
-    50% {
-      margin-right: 520px;
-    }
-    100% {
-      margin-right: 500px;
-    }
-}
+

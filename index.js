@@ -50,9 +50,11 @@ function createCard(profile) {
 
   let followButton = document.querySelector("#follow-link");
   console.log(profile.html_url);
+  
   followButton.onclick = () => {
     window.open(profile.html_url, "github profile", "popup");
   };
+
   followButton.href = profile.html_url;
 }
 
@@ -72,11 +74,12 @@ submit.addEventListener(
   }
 );
 
-// card eventlistner
 
-card.addEventListener(
+// back 'button' eventlistener which toggles the hidden class
+let backButton = document.querySelector("#back");
+back.addEventListener(
     "click", function (e) {
-        if (e.target.tagName === "I") {
+        if (e.target.tagName === "I" || e.target.tagName === "P") {
             card.classList.toggle("hidden");
             inputForm.classList.toggle("hidden");
         }
